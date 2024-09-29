@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Be Rational is a modern platform that fosters innovation and creativity. Meet our team of founders and explore the future with us.">
+    <meta name="keywords" content="Be Rational, innovation, founders, technology, modern platform">
+    <meta name="author" content="Be Rational Team">
+    <title>Be Rational</title>
+
+    <!-- SEO and Optimization -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.berational.xyz/">
+    
+    <!-- Include AOS for scroll animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Include Swiper.js for auto-sliding testimonials -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        /* Core Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289415031980822559/Black_and_Beige_Minimal_Gradient_Art_and_Design_Online_Portfolio_2.png?ex=66f96593&is=66f81413&hm=69c14f8a682c22d7aa37cb440e6f31e3d166276b4e2f79cd19c22a902c13e708&=&format=webp&quality=lossless&width=1055&height=593') no-repeat center center/cover;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #5d4037;
+            overflow-x: hidden;
+            transition: background-image 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289778761104887839/Brown_White_Aesthetic_Background_Instagram_Post_1920_x_1080_px.png?ex=66fa0f93&is=66f8be13&hm=88d64028dcfe2adab26862394c5ef39917ea2dc63053f41af0bdd696cfd0669f&=&format=webp&quality=lossless&width=687&height=386') no-repeat center center/cover;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .nav-links a, .dark-mode h1, .dark-mode p, .dark-mode .founder-card h3, .dark-mode footer a {
+            color: #e0e0e0;
+        }
+
+        .dark-mode .logo {
+            color: #ffb677;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: dropIn 1s ease-out forwards;
+        }
+
+        @keyframes dropIn {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo:hover {
+            color: #ffb677;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            background-color: rgba(255, 183, 119, 0.8);
+            box-shadow: 0 2px 10px rgba(255, 183, 119, 0.5);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-icon {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #5d4037;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .search-icon:hover {
+            color: #ffb677;
+        }
+
+        .search-input {
+            position: absolute;
+            right: 0;
+            width: 0;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: width 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 4px 20px rgba(255, 183, 119, 0.5);
+        }
+
+        .expand {
+            width: 200px;
+            opacity: 1;
+        }
+
+        .shrink {
+            width: 0;
+            opacity: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        /* Video Background */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Typewriter Animation */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            width: 100%;
+            animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #5d4037;
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .swiper-slide {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .swiper-slide p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #5d4037;
+        }
+
+        .swiper-slide .author {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .stats-section h2 {
+            font-size: 3rem;
+            color: #5d4037;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .stat {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffb677;
+            animation: count 2s ease forwards;
+        }
+
+        @keyframes count {
+            0% {
+                content: "0";
+            }
+            100% {
+                content: attr(data-number);
+            }
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #5d4037;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #5d4037;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #736c65;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .contact-form h2 {
+            font-size: 2.5rem;
+            color: #5d4037;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-form input:invalid, .contact-form textarea:invalid {
+            border-color: red;
+        }
+
+        .contact-form button {
+            background-color: #ffb677;
+            color: #5d4037;
+            padding: 0.75rem 2rem;
+            font-size: 1.25rem;
+            text-decoration: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .contact-form button:hover {
+            background-color: #d4905f;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffb677;
+            padding: 0.75rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #d4905f;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-color: #ffb677;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .fab:hover {
+            background-color: #d4905f;
+            transform: translateY(-5px);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.8);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .founder-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo">
+                Be Rational.
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="your-video-url.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Be Rational</h1>
+            <p>The Future of Innovation Starts Here.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What People Say</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p>"Be Rational has completely transformed how we think about innovation. Their work is truly revolutionary."</p>
+                    <div class="author">- Alex Carter</div>
+                </div>
+                <div class="swiper-slide">
+                    <p>"Exceptional team and results! We highly recommend them for anyone seeking cutting-edge solutions."</p>
+                    <div class="author">- Emily Dawson</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2>Our Achievements</h2>
+        <div class="stats-container">
+            <div class="stat" data-number="100">100+</div>
+            <div class="stat" data-number="50">50+</div>
+            <div class="stat" data-number="25">25+</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service-card" data-aos="fade-up">
+                <h3>Consulting</h3>
+                <p>We offer expert consulting services to help businesses navigate the modern tech landscape.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Development</h3>
+                <p>Our team specializes in building innovative, cutting-edge software solutions.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <h3>Design</h3>
+                <p>We design visually appealing and user-friendly websites that engage and convert customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button>Send Message</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Be Rational. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fab">Contact Us</div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</div>
+
+    <!-- Include AOS and Swiper.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        AOS.init();
+        
+        const swiper = new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        const searchIcon = document.querySelector('.search-icon');
+        const searchInput = document.querySelector('.search-input');
+        let isSearchOpen = false;
+
+        searchIcon.addEventListener('click', () => {
+            if (!isSearchOpen) {
+                searchInput.classList.add('expand');
+                searchInput.classList.remove('shrink');
+                searchInput.focus();
+            } else {
+                searchInput.classList.add('shrink');
+                searchInput.classList.remove('expand');
+            }
+            isSearchOpen = !isSearchOpen;
+        });
+
+        // Dark Mode Toggle
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
