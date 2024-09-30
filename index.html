@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +12,20 @@
     <!-- SEO and Optimization -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.berational.xyz/">
-    
+
     <!-- Include AOS for scroll animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
+
     <!-- Include Swiper.js for auto-sliding testimonials -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- Include FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+
+    <!-- Include Lightbox.js for image gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
+
+    <!-- Custom Styling -->
     <style>
         /* Core Styles */
         * {
@@ -29,9 +34,13 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289415031980822559/Black_and_Beige_Minimal_Gradient_Art_and_Design_Online_Portfolio_2.png?ex=66f96593&is=66f81413&hm=69c14f8a682c22d7aa37cb440e6f31e3d166276b4e2f79cd19c22a902c13e708&=&format=webp&quality=lossless&width=1055&height=593') no-repeat center center/cover;
+            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289995741766484151/Untitled_design.png?ex=66fad9a7&is=66f98827&hm=56a6ee997dcca917acba7da7131854d08f6151982cf23c7dbe096958bc8d199e&=&format=webp&quality=lossless&width=1055&height=593') no-repeat center center/cover;
             background-size: cover;
             background-attachment: fixed;
             color: #5d4037;
@@ -41,13 +50,17 @@
 
         /* Dark Mode Styles */
         body.dark-mode {
-            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289778761104887839/Brown_White_Aesthetic_Background_Instagram_Post_1920_x_1080_px.png?ex=66fa0f93&is=66f8be13&hm=88d64028dcfe2adab26862394c5ef39917ea2dc63053f41af0bdd696cfd0669f&=&format=webp&quality=lossless&width=687&height=386') no-repeat center center/cover;
+            background: url('https://media.discordapp.net/attachments/1221862249539436637/1289996228012015686/Untitled_design_2.png?ex=66fada1b&is=66f9889b&hm=b7fc3128e20afc7a9443edb0f7a07e75cef1c8cfeafff009721110b7ad38b7f8&=&format=webp&quality=lossless&width=1055&height=593') no-repeat center center/cover;
             background-size: cover;
             background-attachment: fixed;
             color: #e0e0e0;
         }
 
-        .dark-mode .nav-links a, .dark-mode h1, .dark-mode p, .dark-mode .founder-card h3, .dark-mode footer a {
+        .dark-mode .nav-links a,
+        .dark-mode h1,
+        .dark-mode p,
+        .dark-mode .founder-card h3,
+        .dark-mode footer a {
             color: #e0e0e0;
         }
 
@@ -76,10 +89,17 @@
                 transform: translateY(-100px);
                 opacity: 0;
             }
+
             100% {
                 transform: translateY(0);
                 opacity: 1;
             }
+        }
+
+        .sticky {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 100%;
         }
 
         .logo {
@@ -165,6 +185,14 @@
             opacity: 0;
         }
 
+        /* Parallax Scrolling Background */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -215,6 +243,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -223,12 +252,19 @@
 
         /* Typewriter Animation */
         @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         @keyframes blink {
-            50% { border-color: transparent; }
+            50% {
+                border-color: transparent;
+            }
         }
 
         .hero h1 {
@@ -245,6 +281,52 @@
         .hero p {
             font-size: 1.5rem;
             animation: fadeIn 2.5s ease-out;
+        }
+
+        /* Newsletter Subscription Form */
+        .newsletter {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .newsletter input[type="email"] {
+            width: 60%;
+            padding: 1rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            margin-right: 1rem;
+            outline: none;
+        }
+
+        .newsletter button {
+            background-color: #ffb677;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: #d4905f;
+        }
+
+        /* Scroll Progress Indicator */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background-color: #ffb677;
+            z-index: 1001;
         }
 
         /* Testimonials Section */
@@ -323,6 +405,7 @@
             0% {
                 content: "0";
             }
+
             100% {
                 content: attr(data-number);
             }
@@ -391,7 +474,8 @@
             margin-bottom: 1.5rem;
         }
 
-        .contact-form input, .contact-form textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
             padding: 1rem;
             border: 1px solid #ddd;
@@ -401,7 +485,8 @@
             background: rgba(255, 255, 255, 0.8);
         }
 
-        .contact-form input:invalid, .contact-form textarea:invalid {
+        .contact-form input:invalid,
+        .contact-form textarea:invalid {
             border-color: red;
         }
 
@@ -419,6 +504,38 @@
 
         .contact-form button:hover {
             background-color: #d4905f;
+        }
+
+        /* Social Share Icons */
+        .social-share {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .social-share a {
+            font-size: 1.5rem;
+            color: #ffb677;
+            transition: color 0.3s ease;
+        }
+
+        .social-share a:hover {
+            color: #ffffff;
+        }
+
+        /* Lightbox Image Gallery */
+        .lightbox-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .lightbox-gallery img {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 200px;
         }
 
         /* Dark Mode Toggle */
@@ -495,7 +612,11 @@
         }
     </style>
 </head>
+
 <body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="progressBar"></div>
 
     <!-- Navbar -->
     <nav>
@@ -519,7 +640,7 @@
     </nav>
 
     <!-- Hero Section with Video Background -->
-    <section class="hero">
+    <section class="hero parallax">
         <video autoplay muted loop>
             <source src="your-video-url.mp4" type="video/mp4">
         </video>
@@ -527,6 +648,15 @@
             <h1>Welcome to Be Rational</h1>
             <p>The Future of Innovation Starts Here.</p>
         </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="newsletter">
+        <h2>Stay Updated!</h2>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
     </section>
 
     <!-- Testimonials Section -->
@@ -586,6 +716,20 @@
         </div>
     </section>
 
+    <!-- Social Share Section -->
+    <div class="social-share">
+        <a href="https://facebook.com/sharer.php?u=your-url" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/intent/tweet?url=your-url" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=your-url" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- Lightbox Image Gallery -->
+    <div class="lightbox-gallery">
+        <a href="images/image1.webp" data-lightbox="gallery"><img src="https://media.discordapp.net/attachments/1221862249539436637/1289993231773470853/image.png?ex=66fad751&is=66f985d1&hm=6f4b366e94f58748cc7767a7548a9ae3d31fe21938e67b7e630cf8a5d1b254a5&=&format=webp&quality=lossless&width=687&height=383" alt="Thumbnail 1"></a>
+        <a href="images/image2.webp" data-lightbox="gallery"><img src="https://media.discordapp.net/attachments/1221862249539436637/1290247019989831700/image.png?ex=66fbc3ad&is=66fa722d&hm=2d17cb12f3e72919bf9da18aaa4138654c3e613342a53e8f82b2962e91010b10&=&format=webp&quality=lossless&width=687&height=417" alt="Thumbnail 2"></a>
+        <a href="image3.jpg" data-lightbox="gallery"><img src="https://media.discordapp.net/attachments/1221862249539436637/1290247595364581437/image.png?ex=66fbc436&is=66fa72b6&hm=cb295648339b7acb656b0595f2135ab14b162ff844ee776da7b91a4adfcd1d9c&=&format=webp&quality=lossless&width=687&height=411" alt="Thumbnail 3"></a>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Be Rational. All rights reserved.</p>
@@ -598,12 +742,14 @@
     <!-- Dark Mode Toggle -->
     <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</div>
 
-    <!-- Include AOS and Swiper.js Scripts -->
+    <!-- Include AOS, Swiper.js, and Lightbox Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+
     <script>
         AOS.init();
-        
+
         const swiper = new Swiper('.swiper-container', {
             autoplay: {
                 delay: 4000,
@@ -635,7 +781,34 @@
         // Dark Mode Toggle
         const toggleDarkMode = () => {
             document.body.classList.toggle('dark-mode');
+            localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Sticky Navbar on Scroll
+        window.onscroll = function () {
+            const navbar = document.querySelector("nav");
+            const progressBar = document.getElementById("progressBar");
+            const scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+            const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollDistance / totalHeight) * 100;
+
+            if (window.pageYOffset > 100) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+
+            progressBar.style.width = `${scrollPercent}%`;
+        }
+
+        // Load dark mode from local storage
+        window.onload = function () {
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
         }
     </script>
 </body>
+
 </html>
